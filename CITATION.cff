@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: "Multimodal-PE: Wide-angle multimodal parabolic equation solver"
+message: "If you use this software, please cite the paper and the software release (DOI) below."
+type: software
+authors:
+  - given-names: Tengjiao
+    family-names: He
+    orcid: "https://orcid.org/0000-0002-3906-3418"
+version: "v1.0.0"
+doi: "10.5281/zenodo.18298324"
+date-released: "2026-01-19"
+url: "https://github.com/TengjiaoHE/Multimodal-PE"
+keywords:
+  - underwater acoustics
+  - parabolic equation
+  - wide-angle
+  - normal modes
