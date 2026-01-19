@@ -4,7 +4,7 @@
 
 This code accompanies the following publication:
 
-**He, T., & Guo, W. (2026).** Wide-angle multimodal parabolic equations: modeling of directional sound propagation in stratified range-dependent fluid waveguides. *Proceedings of the Royal Society A*, RSPA-2025-1036.R1
+**He, T., & Guo, W. (2026).** Wide-angle multimodal parabolic equations: modeling of directional sound propagation in stratified range-dependent fluid waveguides. *Proceedings of the Royal Society A*,.
 
 If you use this code in your research, please cite the above paper.
 
@@ -29,7 +29,7 @@ This repository contains MATLAB code implementing the Multimodal-PE method for m
 
 ### Main Files
 
-- `multimodal_pe2.m` - Main Multimodal-PE solver (Eq. 2.15 in paper)
+- `multimodal_pe.p` - Main Multimodal-PE solver (Eq. 2.15 in paper， p-code version for efficiency and stability considerations, the full version of M file is available upon reasonable request)
 - `profile_upd_multilayer.m` - Updates K operator for sound speed profile (Eq. 2.23-2.26)
 - `topo_upd_multilayer.m` - Updates C and L operators for topography (Eq. 2.22)
 - `configPML_multilayer.m` - Configures PML for domain truncation (Eq. 2.18-2.20)
@@ -103,21 +103,7 @@ where:
 
 ```matlab
 % Environment setup
-env.freq = 100;           % Frequency [Hz]
-env.c0 = 1500;           % Reference sound speed [m/s]
-env.numLayer = 2;        % Number of layers
-env.rho = {1000, 1500};  % Density [kg/m³]
-env.ssp = {...};         % Sound speed profile
-env.atten = {...};       % Attenuation [dB/λ]
 
-% Grid setup
-grid.dr = 25;            % Range step [m]
-grid.rmax = 10000;       % Maximum range [m]
-grid.dz = 0.5;          % Depth step [m]
-grid.zmax = 200;        % Physical depth D [m]
-grid.dpml = 50;         % PML thickness [m]
-grid.zs = 50;           % Source depth [m]
-grid.nP = 8;            % Padé order
 
 % Source beam pattern (omnidirectional)
 sbp.dir = @(phi, k) ones(size(phi));
@@ -201,8 +187,6 @@ The code has been validated against:
 
 ### Required
 - MATLAB R2019b or later
-- `ClenshawCurtis.m` - Clenshaw-Curtis quadrature (not included)
-- `pade_expsqrt.m` - Padé approximation function (not included)
 
 ### Optional
 - MATLAB Parallel Computing Toolbox (for GPU acceleration)
@@ -212,21 +196,14 @@ The code has been validated against:
 1. **2D only**: Current implementation is for range-depth (r-z) problems
 2. **Fluid media**: Does not handle elastic seabeds (see elastic PE extensions)
 3. **One-way**: No backscattering (inherent to PE methods)
-4. **Paraxial**: Best for propagation angles < 70° (wide-angle valid to ~85°)
 
 ## Troubleshooting
 
 ### Common Issues
 
 **Numerical instability**
-- Reduce range step Δr
-- Increase number of modes M
+- Reduce range step Δr or depth step Δz
 - Check PML parameters
-
-**Poor accuracy**
-- Increase Padé order (e.g., 10 or 12)
-- Refine depth grid
-- Verify environment interpolation
 
 **Slow performance**
 - Use single precision
@@ -236,6 +213,12 @@ The code has been validated against:
 ## Contact
 
 For questions, bug reports, or contributions, please contact:
+
+**Tengjiao He**  
+College of Meteorology and Oceanography  
+Shanghai Jiao Tong University  
+Shanghai, China  
+Email: hetengjiao@sjtu.edu.cn
 
 **Wei Guo**  
 College of Meteorology and Oceanography  
@@ -247,9 +230,6 @@ Email: guowei23@nudt.edu.cn
 
 This code is provided as supplementary material to the publication. It is distributed "as-is" without warranty of any kind. Users are free to use and modify the code for research purposes, provided that proper citation is given to the original publication.
 
-## Acknowledgments
-
-This work was supported by the National Natural Science Foundation of China (Grant No. 12304499).
 
 ---
 
