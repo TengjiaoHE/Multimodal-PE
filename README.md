@@ -29,7 +29,7 @@ This repository contains MATLAB code implementing the Multimodal-PE method for m
 
 ### Main Files
 
-- `multimodal_pe.p` - Main Multimodal-PE solver (Eq. 2.15 in paper， p-code version for efficiency and stability considerations, the full version of M file is available upon reasonable request)
+- `multimodal_pe.p` - Main Multimodal-PE solver (Eq. 2.15 in paper, p-code version for efficiency and stability considerations, the full version of M file is available upon reasonable request)
 - `profile_upd_multilayer.m` - Updates K operator for sound speed profile (Eq. 2.23-2.26)
 - `topo_upd_multilayer.m` - Updates C and L operators for topography (Eq. 2.22)
 - `configPML_multilayer.m` - Configures PML for domain truncation (Eq. 2.18-2.20)
@@ -178,11 +178,13 @@ sbp.dir = @(phi, k) ...
 
 The code has been validated against:
 
-1. **ASA benchmark wedge** (Section 3(a)(i))
-2. **RAM range-dependent benchmark** (Section 3(a)(ii))
-3. **Multilayer seabed** (Section 3(d))
-4. **Directional propagation** (Section 3(c))
-
+1. **ASA benchmark wedge** (running demo1.m)
+2. **RAM range-dependent benchmark** (running demo2.m)
+3. **Multilayer seabed** (running demo3.m)
+4. **Directional propagation(Downslope)** (running demo4.m)
+5. **Directional propagation(Dickins seamount)** (running demo5.m)
+6. **Warm Core Eddy(highlighting high efficiency for range-independent segmentation scheme)** (running demo6.m)
+   
 ## Dependencies
 
 ### Required
