@@ -8,6 +8,8 @@ This code accompanies the following publication:
 
 If you use this code in your research, please cite the above paper.
 
+---
+
 ## Overview
 
 This repository contains MATLAB code implementing the Multimodal-PE method for modeling underwater acoustic propagation in stratified, range-dependent environments. The method is particularly suited for:
