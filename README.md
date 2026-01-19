@@ -387,6 +387,7 @@ The code has been validated against:
 
 1. **ASA benchmark wedge** (running demo1.m)
 <img src='/images/demo1.png'>
+
 2. **RAM range-dependent benchmark** (running demo2.m)
 3. **Multilayer seabed** (running demo3.m)
 4. **Directional propagation(Downslope)** (running demo4.m)
