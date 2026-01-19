@@ -148,7 +148,6 @@ Example:
 1600 \\ reference wave velocity [m/s]
 ```
 
----
 
 #### 2. File layout (high level)
 
@@ -162,7 +161,6 @@ A valid `*.env` file is organized as:
 
 > ⚠️ The parser reads values **strictly in order**. Do not insert extra tokens unless they are placed after `\\`.
 
----
 
 #### 3. Case name
 
@@ -172,7 +170,6 @@ Line 1: free text.
 My test case name
 ```
 
----
 
 #### 4. Header block (global settings)
 
@@ -208,7 +205,6 @@ Example (`numLayer=2`, `numRange=2`, each layer has 2 depth samples):
 | `npml` | `grid.npml` | number of PML grid points | count |
 | `nP` | `grid.nP` | Padé order (wide-angle) | order |
 
----
 
 #### 5. Range nodes: `env.rg`
 
@@ -225,7 +221,6 @@ Example:
 0 4000
 ```
 
----
 
 #### 6. Layer profile blocks
 
@@ -263,7 +258,6 @@ Choose one convention and keep it consistent with your solver setup.
 - `alpha`: solver-dependent (e.g., dB/m, dB/λ, Nepers/m, etc.).  
   The `*.env` file stores numbers only; interpretation is done in the solver.
 
----
 
 #### 7. Interface geometry / topography
 
@@ -285,7 +279,6 @@ z1 z2 ... zM
 
 Interfaces are generally treated as piecewise-linear between control points.
 
----
 
 #### 8. Example: `input4.env` (downslope case)
 
@@ -329,10 +322,6 @@ Example 4: Downslope double positon beam
 0 4000
 100 400
 ```
-
----
-
-
 
 ## Algorithm Flow
 
