@@ -389,11 +389,19 @@ The code has been validated against:
 <img src='/images/demo1.png'>
 
 2. **RAM range-dependent benchmark** (running demo2.m)
-3. **Multilayer seabed** (running demo3.m)
-4. **Directional propagation(Downslope)** (running demo4.m)
-5. **Directional propagation(Dickins seamount)** (running demo5.m)
-6. **Warm Core Eddy(highlighting high efficiency for range-independent segmentation scheme)** (running demo6.m)
+<img src='/images/demo2.png'>
 
+3. **Multilayer seabed** (running demo3.m)
+<img src='/images/demo3.png'>
+
+4. **Directional propagation(Downslope)** (running demo4.m)
+<img src='/images/demo4.png'>
+
+5. **Directional propagation(Dickins seamount)** (running demo5.m)
+<img src='/images/demo5.png'>
+
+6. **Warm Core Eddy(highlighting high efficiency for range-independent segmentation scheme)** (running demo6.m)
+<img src='/images/demo6.png'>
    
 ---
 
