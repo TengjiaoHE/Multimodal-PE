@@ -138,7 +138,7 @@ sbp.dir = @(phi, k) ...
 
 ---
 
-## 1. Comment syntax
+#### 1. Comment syntax
 
 - Comments use a **double backslash** delimiter: `\\`
 - Anything after the first `\\` on a line is ignored by the parser.
@@ -152,7 +152,7 @@ Example:
 
 ---
 
-## 2. File layout (high level)
+#### 2. File layout (high level)
 
 A valid `*.env` file is organized as:
 
@@ -166,7 +166,7 @@ A valid `*.env` file is organized as:
 
 ---
 
-## 3. Case name
+#### 3. Case name
 
 Line 1: free text.
 
@@ -176,9 +176,9 @@ My test case name
 
 ---
 
-## 4. Header block (global settings)
+#### 4. Header block (global settings)
 
-### 4.1 Dimensions
+##### 4.1 Dimensions
 
 Immediately after the case name, provide:
 
@@ -194,7 +194,7 @@ Example (`numLayer=2`, `numRange=2`, each layer has 2 depth samples):
 2 2
 ```
 
-### 4.2 Physical & numerical parameters (in this exact order)
+##### 4.2 Physical & numerical parameters (in this exact order)
 
 | In file | Variable | Meaning | Unit |
 |---|---|---|---|
@@ -212,7 +212,7 @@ Example (`numLayer=2`, `numRange=2`, each layer has 2 depth samples):
 
 ---
 
-## 5. Range nodes: `env.rg`
+#### 5. Range nodes: `env.rg`
 
 After the header scalars, provide `numRange` numbers:
 
@@ -229,11 +229,11 @@ Example:
 
 ---
 
-## 6. Layer profile blocks
+#### 6. Layer profile blocks
 
 For each layer `i = 1..numLayer`, provide `nprofile(i)` **depth sample lines**.
 
-### 6.1 Per-line format
+##### 6.1 Per-line format
 
 Each depth-sample line contains:
 
@@ -250,7 +250,7 @@ So the column layout is:
 z   c(r1)  c(r2) ... c(rN)   rho   alpha
 ```
 
-### 6.2 Depth coordinate convention (important)
+##### 6.2 Depth coordinate convention (important)
 
 The format itself does not enforce whether `z` is:
 
@@ -259,7 +259,7 @@ The format itself does not enforce whether `z` is:
 
 Choose one convention and keep it consistent with your solver setup.
 
-### 6.3 Units for `rho` and `alpha`
+##### 6.3 Units for `rho` and `alpha`
 
 - `rho`: whatever the solver expects (e.g., relative density with water = 1.0).
 - `alpha`: solver-dependent (e.g., dB/m, dB/λ, Nepers/m, etc.).  
@@ -267,7 +267,7 @@ Choose one convention and keep it consistent with your solver setup.
 
 ---
 
-## 7. Interface geometry / topography
+#### 7. Interface geometry / topography
 
 After all layer profile blocks, provide:
 
@@ -289,7 +289,7 @@ Interfaces are generally treated as piecewise-linear between control points.
 
 ---
 
-## 8. Example: `input4.env` (downslope case)
+#### 8. Example: `input4.env` (downslope case)
 
 This is an example with:
 
@@ -334,18 +334,6 @@ Example 4: Downslope double positon beam
 
 ---
 
-## 9. Tips for reproducibility
-
-- Keep the `*.env` file in version control and tag a release that matches the paper.
-- Provide a `reproduce/` script that reads the env file and regenerates key figures.
-- If you change units for `alpha`, document it clearly in the README.
-
----
-
-## 10. Related files
-
-- `read_env.m`: MATLAB parser for the `*.env` format  
-- `ENV_input_file_guide.md`: extended documentation (if included)
 
 
 ## Algorithm Flow
