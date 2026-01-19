@@ -27,6 +27,9 @@ This repository contains MATLAB code implementing the Multimodal-PE method for m
 4. **GPU acceleration** and precision control (single/double)
 5. **Very-wide-angle capability**: Supports propagation angles up to ±90°
 
+
+---
+
 ## File Descriptions
 
 ### Main Files
@@ -58,6 +61,9 @@ This repository contains MATLAB code implementing the Multimodal-PE method for m
 | `C` | C | Second derivative operator |
 | `K` | K | Profile operator |
 | `L` | L | First derivative operator |
+
+
+---
 
 ## Theoretical Background
 
@@ -103,6 +109,9 @@ where:
 - **W**: Projection matrix from normal modes to basis modes
 - **Λ(r₀)**: Diagonal matrix with modal propagation factors
 - **c(zₛ)**: Modal excitation coefficients (Eq. 2.30)
+
+
+---
 
 ## Usage Example
 
@@ -319,6 +328,8 @@ Example 4: Downslope double positon beam
 100 400
 ```
 
+---
+
 ## Algorithm Flow
 
 1. **Initialization**
@@ -343,6 +354,9 @@ Example 4: Downslope double positon beam
    - Reconstruct pressure: p = ψH₀⁽¹⁾(k₀r) (Eq. 2.2)
    - Compute transmission loss
 
+
+---
+
 ## Performance Considerations
 
 ### Recommended Parameters
@@ -364,6 +378,9 @@ Example 4: Downslope double positon beam
 - **Single precision**: ~4M² bytes for operators
 - **GPU**: Additional memory for large grids
 
+
+---
+
 ## Validation Benchmarks
 
 The code has been validated against:
@@ -375,7 +392,10 @@ The code has been validated against:
 5. **Directional propagation(Downslope)** (running demo4.m)
 6. **Directional propagation(Dickins seamount)** (running demo5.m)
 7. **Warm Core Eddy(highlighting high efficiency for range-independent segmentation scheme)** (running demo6.m)
+
    
+---
+
 ## Dependencies
 
 ### Required
@@ -384,12 +404,17 @@ The code has been validated against:
 ### Optional
 - MATLAB Parallel Computing Toolbox (for GPU acceleration)
 
+
+---
+
 ## Known Limitations
 
 1. **2D only**: Current implementation is for range-depth (r-z) problems
 2. **Fluid media**: Does not handle elastic seabeds (see elastic PE extensions)
 3. **One-way**: No backscattering (inherent to PE methods)
 
+
+---
 
 ## Contact
 
@@ -406,6 +431,9 @@ College of Meteorology and Oceanography
 National University of Defense Technology  
 Changsha, China  
 Email: guowei23@nudt.edu.cn
+
+
+---
 
 ## License
 
