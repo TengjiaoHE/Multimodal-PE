@@ -132,6 +132,220 @@ sbp.dir = @(phi, k) ...
     2*besselj(1, k*ra*sin(phi+phi_s))./(k*ra*sin(phi+phi_s));
 ```
 ### env file
+- the `*.env` file layout and conventions;
+- the meaning (and units) of each field; and
+- an example `input4.env` (downslope case).
+
+---
+
+## 1. Comment syntax
+
+- Comments use a **double backslash** delimiter: `\\`
+- Anything after the first `\\` on a line is ignored by the parser.
+- You can write **full-line comments** or **inline comments**.
+
+Example:
+
+```text
+1600 \\ reference wave velocity [m/s]
+```
+
+---
+
+## 2. File layout (high level)
+
+A valid `*.env` file is organized as:
+
+1. **Case name** (string, one line)
+2. **Header block** (global dimensions + physical/numerical parameters)
+3. **Range nodes** `env.rg` (defines range dependence)
+4. **Layer profile blocks** (one block per layer)
+5. **Interface geometry / topography** (one block per interface)
+
+> ⚠️ The parser reads values **strictly in order**. Do not insert extra tokens unless they are placed after `\\`.
+
+---
+
+## 3. Case name
+
+Line 1: free text.
+
+```text
+My test case name
+```
+
+---
+
+## 4. Header block (global settings)
+
+### 4.1 Dimensions
+
+Immediately after the case name, provide:
+
+1. `numLayer` (integer): number of layers  
+2. `numRange` (integer): number of **range nodes** used to specify range-dependent profiles  
+3. `nprofile` (array of `numLayer` integers): number of depth samples in each layer
+
+Example (`numLayer=2`, `numRange=2`, each layer has 2 depth samples):
+
+```text
+2
+2
+2 2
+```
+
+### 4.2 Physical & numerical parameters (in this exact order)
+
+| In file | Variable | Meaning | Unit |
+|---|---|---|---|
+| `c0` | `env.c0` | reference wave velocity | m/s |
+| `freq` | `env.freq` | frequency | Hz |
+| `zs` | `grid.zs` | source depth | m |
+| `zr` | `grid.zr` | receiver depth | m |
+| `rmax` | `grid.rmax` | maximum range | m |
+| `dr` | `grid.dr` | range step | m |
+| `zmax` | `grid.zmax` | maximum computational depth | m |
+| `dz` | `grid.dz` | depth step | m |
+| `dpml` | `grid.dpml` | PML thickness | m |
+| `npml` | `grid.npml` | number of PML grid points | count |
+| `nP` | `grid.nP` | Padé order (wide-angle) | order |
+
+---
+
+## 5. Range nodes: `env.rg`
+
+After the header scalars, provide `numRange` numbers:
+
+- `env.rg(1..numRange)` (meters)
+
+These are the range locations at which layer profiles are specified.
+The solver typically interpolates between them.
+
+Example:
+
+```text
+0 4000
+```
+
+---
+
+## 6. Layer profile blocks
+
+For each layer `i = 1..numLayer`, provide `nprofile(i)` **depth sample lines**.
+
+### 6.1 Per-line format
+
+Each depth-sample line contains:
+
+- `1 + numRange + 2` numeric fields, in this order:
+
+1. `z` : depth coordinate for this sample  
+2. `c(r1) ... c(rN)` : sound speed at each range node `env.rg`  
+3. `rho` : density  
+4. `alpha` : attenuation  
+
+So the column layout is:
+
+```text
+z   c(r1)  c(r2) ... c(rN)   rho   alpha
+```
+
+### 6.2 Depth coordinate convention (important)
+
+The format itself does not enforce whether `z` is:
+
+- absolute depth from the sea surface, **or**
+- depth measured from the **top of the current layer**.
+
+Choose one convention and keep it consistent with your solver setup.
+
+### 6.3 Units for `rho` and `alpha`
+
+- `rho`: whatever the solver expects (e.g., relative density with water = 1.0).
+- `alpha`: solver-dependent (e.g., dB/m, dB/λ, Nepers/m, etc.).  
+  The `*.env` file stores numbers only; interpretation is done in the solver.
+
+---
+
+## 7. Interface geometry / topography
+
+After all layer profile blocks, provide:
+
+1. `toponr` : integer, number of control points per interface
+
+Then for each interface `k = 1..(numLayer-1)` provide **2×toponr** numbers:
+
+- first **all ranges**: `r1 r2 ... rM`
+- then **all depths**: `z1 z2 ... zM`
+
+Typically written as:
+
+```text
+r1 r2 ... rM
+z1 z2 ... zM
+```
+
+Interfaces are generally treated as piecewise-linear between control points.
+
+---
+
+## 8. Example: `input4.env` (downslope case)
+
+This is an example with:
+
+- 2 layers (water + bottom)
+- 2 range nodes (`r=0` and `r=4000 m`)
+- a sloping bottom from 100 m to 400 m water depth
+
+```text
+Example 4: Downslope double positon beam
+2 \\ numLayer
+2 \\ numRange
+2 2 \\ nprofile for each layer
+
+1600 \\ c0 [m/s]
+1000 \\ frequency [Hz]
+50 \\ source depth zs [m]
+30 \\ receiver depth zr [m]
+4000 \\ rmax [m]
+2 \\ dr [m]
+410 \\ zmax [m]
+0.2 \\ dz [m]
+10 \\ dpml [m]
+32 \\ npml [grid points]
+8 \\ Pade order nP
+
+0 4000 \\ env.rg range nodes [m]
+
+\\ Layer 1 (water): z, c(r=0), c(r=4000), rho, alpha
+0   1500 1500  1.0 0.0
+400 1500 1500  1.0 0.0
+
+\\ Layer 2 (bottom): z, c(r=0), c(r=4000), rho, alpha
+0   2200 2200  2.0 0.2
+420 2200 2200  2.0 0.2
+
+2 \\ toponr (interface control points)
+
+\\ Interface 1: ranges then depths
+0 4000
+100 400
+```
+
+---
+
+## 9. Tips for reproducibility
+
+- Keep the `*.env` file in version control and tag a release that matches the paper.
+- Provide a `reproduce/` script that reads the env file and regenerates key figures.
+- If you change units for `alpha`, document it clearly in the README.
+
+---
+
+## 10. Related files
+
+- `read_env.m`: MATLAB parser for the `*.env` format  
+- `ENV_input_file_guide.md`: extended documentation (if included)
 
 
 ## Algorithm Flow
