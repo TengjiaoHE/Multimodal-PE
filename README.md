@@ -245,19 +245,13 @@ z   c(r1)  c(r2) ... c(rN)   rho   alpha
 
 ##### 6.2 Depth coordinate convention (important)
 
-The format itself does not enforce whether `z` is:
-
-- absolute depth from the sea surface, **or**
-- depth measured from the **top of the current layer**.
-
-Choose one convention and keep it consistent with your solver setup.
+The format itself does enforce `z` is:
+- absolute depth from the sea surface.
 
 ##### 6.3 Units for `rho` and `alpha`
 
-- `rho`: whatever the solver expects (e.g., relative density with water = 1.0).
-- `alpha`: solver-dependent (e.g., dB/m, dB/λ, Nepers/m, etc.).  
-  The `*.env` file stores numbers only; interpretation is done in the solver.
-
+- `rho`: g/cm^3.
+- `alpha`: dB/λ.  
 
 #### 7. Interface geometry / topography
 
