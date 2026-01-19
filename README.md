@@ -430,7 +430,7 @@ The code has been validated against:
 For questions, bug reports, or contributions, please contact:
 
 **Tengjiao He**  
-College of Meteorology and Oceanography  
+School of Ocean and Civil Engineering  
 Shanghai Jiao Tong University  
 Shanghai, China  
 Email: hetengjiao@sjtu.edu.cn
