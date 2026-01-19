@@ -131,12 +131,10 @@ sbp.dir = @(phi, k) ...
     2*besselj(1, k*ra*sin(phi-phi_s))./(k*ra*sin(phi-phi_s)) + ...
     2*besselj(1, k*ra*sin(phi+phi_s))./(k*ra*sin(phi+phi_s));
 ```
-### env file
+### Explanation of env file
 - the `*.env` file layout and conventions;
 - the meaning (and units) of each field; and
 - an example `input4.env` (downslope case).
-
----
 
 #### 1. Comment syntax
 
