@@ -12,7 +12,7 @@ If you use this code in your research, please cite the above paper.
 
 This repository contains MATLAB code implementing the Multimodal-PE method for modeling underwater acoustic propagation in stratified, range-dependent environments. The method is particularly suited for:
 
-- **Directional sources** with arbitrary prescribed directivity
+- **Directional sources** with arbitrary prescribed directivity (which can be complex values to take into account phase information)
 - **Multilayer seabeds** with density and sound speed discontinuities
 - **Very-wide-angle propagation** (up to ±90°)
 - **Range-dependent environments** with adaptive optimization
