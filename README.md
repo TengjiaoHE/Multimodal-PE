@@ -388,18 +388,6 @@ The code has been validated against:
 2. **Fluid media**: Does not handle elastic seabeds (see elastic PE extensions)
 3. **One-way**: No backscattering (inherent to PE methods)
 
-## Troubleshooting
-
-### Common Issues
-
-**Numerical instability**
-- Reduce range step Δr or depth step Δz
-- Check PML parameters
-
-**Slow performance**
-- Use single precision
-- Enable GPU acceleration
-- Check segment identification (avoid too many small segments)
 
 ## Contact
 
