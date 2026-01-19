@@ -33,6 +33,9 @@ This repository contains MATLAB code implementing the Multimodal-PE method for m
 - `profile_upd_multilayer.m` - Updates K operator for sound speed profile (Eq. 2.23-2.26)
 - `topo_upd_multilayer.m` - Updates C and L operators for topography (Eq. 2.22)
 - `configPML_multilayer.m` - Configures PML for domain truncation (Eq. 2.18-2.20)
+- `read_env.m` - Loads environmental and computational parameters
+- `fejer.m` - Weights of the Fejer2, Clenshaw-Curtis and Fejer1 quadratures by DFTs
+- `ClenshawCurtis.m` - Clenshaw-Curtis scheme for numerical integration
 
 ### Variable Naming Convention (Following Paper Notation)
 
@@ -103,7 +106,7 @@ where:
 
 ```matlab
 % Environment setup
-
+[grid, env, casename] = read_env('input.env'); % Load env file
 
 % Source beam pattern (omnidirectional)
 sbp.dir = @(phi, k) ones(size(phi));
@@ -128,6 +131,8 @@ sbp.dir = @(phi, k) ...
     2*besselj(1, k*ra*sin(phi-phi_s))./(k*ra*sin(phi-phi_s)) + ...
     2*besselj(1, k*ra*sin(phi+phi_s))./(k*ra*sin(phi+phi_s));
 ```
+### env file
+
 
 ## Algorithm Flow
 
