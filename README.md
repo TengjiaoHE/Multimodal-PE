@@ -2,7 +2,7 @@
 
 If you use this code, please cite:
 
-- **Paper**: *Wide-angle multimodal parabolic equations: modeling of directional sound propagation in stratified range-dependent fluid waveguides*, Proceedings A, 2026. https://doi.org/XXXXXXXX
+- **Paper**: *Wide-angle multimodal parabolic equations: modeling of directional sound propagation in stratified range-dependent fluid waveguides*, Proc. R. Soc. A, 2026. https://doi.org/10.1098/rspa.2025.1036
 
 - **Code (paper-version release)**: Tengjiao He, *Multimodal-PE (v1.0.0)*, Zenodo. https://doi.org/10.5281/zenodo.18298324
 
