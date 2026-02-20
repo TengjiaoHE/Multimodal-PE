@@ -6,6 +6,7 @@
 % He, T., & Guo, W. (2026). Wide-angle multimodal parabolic equations: 
 % modeling of directional sound propagation in stratified range-dependent 
 % fluid waveguides. Proceedings of the Royal Society A,.
+% https://doi.org/10.1098/rspa.2025.1036
 %
 % Description:
 % This code implements the Multimodal-PE method described in the paper.
