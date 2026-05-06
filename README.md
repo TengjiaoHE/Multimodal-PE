@@ -397,7 +397,7 @@ The code has been validated against:
 <img src='/images/demo1.png'>
 
 2. **RAM range-dependent benchmark** (running demo2.m，Fig.6 of the paper)
-<img src='/images/demo2.png'>
+![result](./images/demo2.png?v=2)
 
 3. **Multilayer seabed** (running demo3.m, Fig.13 of the paper)
 <img src='/images/demo3.png'>
