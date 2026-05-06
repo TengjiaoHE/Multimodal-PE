@@ -438,10 +438,10 @@ The code has been validated against:
 For questions, bug reports, or contributions, please contact:
 
 **Tengjiao He**  
-School of Ocean and Civil Engineering  
-Shanghai Jiao Tong University  
-Shanghai, China  
-Email: hetengjiao@sjtu.edu.cn
+School of Mechanical and Aerospace Engineering  
+Nanyang Technological University  
+Singapore, Singapore  
+Email: tengjiao.he@ntu.edu.sg
 
 **Wei Guo**  
 College of Meteorology and Oceanography  
