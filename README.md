@@ -394,22 +394,22 @@ Example 4: Downslope double positon beam
 The code has been validated against:
 
 1. **ASA benchmark wedge** (running demo1.m, Fig.3 of the paper)
-<img src='/images/demo1.png'>
+![result](./images/demo1.png?v=2)
 
 2. **RAM range-dependent benchmark** (running demo2.m，Fig.6 of the paper)
 ![result](./images/demo2.png?v=2)
 
 3. **Multilayer seabed** (running demo3.m, Fig.13 of the paper)
-<img src='/images/demo3.png'>
+![result](./images/demo3.png?v=2)
 
 4. **Directional propagation(Downslope)** (running demo4.m, Fig.9 of the paper)
 ![result](./images/demo4.png?v=2)
 
 6. **Directional propagation(Dickins seamount)** (running demo5.m, Fig.12 of the paper)
-<img src='/images/demo5.png'>
+![result](./images/demo5.png?v=2)
 
 7. **Warm Core Eddy** (running demo6.m, highlighting high efficiency for range-independent segmentation scheme)
-<img src='/images/demo6.png'>
+![result](./images/demo6.png?v=2)
    
 ---
 
