@@ -403,7 +403,7 @@ The code has been validated against:
 <img src='/images/demo3.png'>
 
 4. **Directional propagation(Downslope)** (running demo4.m, Fig.9 of the paper)
-
+<img src='/images/demo4.png'>
 
 5. **Directional propagation(Dickins seamount)** (running demo5.m, Fig.12 of the paper)
 <img src='/images/demo5.png'>
